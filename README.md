@@ -1,6 +1,6 @@
 # Production Simulation and Analyses
 
-<img alt="GitHub" src="https://img.shields.io/github/license/alexmuetze/Production-Simulation-and-Analyses"> <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/alexmuetze/Production-Simulation-and-Analyses">
+<img alt="GitHub" src="https://img.shields.io/github/license/alexmuetze/Production-Simulation-and-Analyses"> <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/alexmuetze/Production-Simulation-and-Analyses"> <a href="https://zenodo.org/badge/latestdoi/604716048"><img src="https://zenodo.org/badge/604716048.svg" alt="DOI"></a>
 
 The tool Production Simulation and Analyses is a simulation library, which enables the user to simulate and evaluate an arbitrarily configurable production area. The focus of the simulation library is on production planning and control (PPC) and in particular the tasks: Throughput planning, order release, capacity control and dispatching.
 The model contains a number of well-known PPC heuristics for these tasks, each of which can be freely parameterized.
