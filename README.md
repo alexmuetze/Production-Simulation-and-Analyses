@@ -1,5 +1,8 @@
 # Production Simulation and Analyses
 
+Das Tool Production Simulation und Analyses ist eine Simulationsbibliothek, welche 
+
+
 Production Simulation and Analyses is a simulation library which can simulate a production shop with different 
 procedures for Production Planning and Control (PPC) focusing Order Release, Capacity Control and Dispatching. 
 It can be fully controlled by any control systems build by the modeller. 
@@ -7,6 +10,7 @@ Futhermore, the model includes an experimental layer for parallel and sequential
 SLURM.
 
 ## Install the Required Dependencies
+Production Simulation and Analyses ist komplett auf Python basiert. 
 
 
 ## Use
