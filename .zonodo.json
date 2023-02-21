@@ -1,0 +1,34 @@
+{
+    "description": "This is the first full version of the simulation library Production Simulation and Analyses, which can be used for productive simulation studies", 
+    "license": "MIT", 
+    "title": "Production Simulation and Analyses. A Simulation Library",
+    "version": "final", 
+    "upload_type": "software",
+    "language": "eng",
+    "communities": [
+        {
+            "identifier": "alexmuetze"
+        }
+    ],
+    "creators": [
+        {
+            "affiliation": "Leibniz University Hannover, Institute of Production Systems and Logistics", 
+            "name": "Alexander Mütze",
+            "orcid": "https://orcid.org/0000-0002-4549-0467"
+        }
+    ], 
+    "access_right": "open"
+  
+    "related_identifiers": [
+        {
+            "scheme": "url", 
+            "identifier": "https://github.com/alexmuetze/Production-Simulation-and-Analyses/tree/final", 
+            "relation": "isSupplementTo"
+        }, 
+        {
+            "scheme": "doi", 
+            "identifier": "10.5281/zenodo.7662509", 
+            "relation": "isVersionOf"
+        }
+    ]
+}
