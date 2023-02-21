@@ -13,12 +13,5 @@
             "name": "M\u00fctze, Alexander"
         }
     ], 
-    "access_right": "open", 
-    "related_identifiers": [
-        {
-            "scheme": "url", 
-            "identifier": "https://github.com/alexmuetze/Production-Simulation-and-Analyses/tree/release", 
-            "relation": "isSupplementTo"
-        }
-    ]
+    "access_right": "open"
 }
