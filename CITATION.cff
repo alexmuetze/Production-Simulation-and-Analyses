@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Feel free to use and edit this simulation library!"
+authors:
+- family-names: "Mütze"
+  given-names: "Alexander"
+  orcid: "https://orcid.org/0000-0002-4549-0467"
+title: "Production Simulation and Analyses. A Simulation Library"
+version: 1.0.0
+doi: 10.5281/zenodo.7662509
+date-released: 2023-02-21
+url: "https://github.com/alexmuetze/Production-Simulation-and-Analyses"
