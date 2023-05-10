@@ -98,7 +98,7 @@ class ModelPanel(object):
         Plus special routing settings enabling the definition of a fixed first work center and routing strengths
         """
 
-        if self.params_dict["shoplayout"] == "RJS":
+               if self.params_dict["shoplayout"] == "RJS":
             self.WC_AND_FLOW_CONFIGURATION: str = 'RJS'
             self.WC_AND_FLOW_CONFIGURATION_SORTING: bool = False
             self.WC_AND_FLOW_CONFIGURATION_SORTINGCLASSIC : bool = False
@@ -106,7 +106,7 @@ class ModelPanel(object):
             self.WC_AND_FLOW_CONFIGURATION_FIRSTWORKINGSYSTEM: bool = False
             self.WC_AND_FLOW_CONFIGURATION_SORTINGVALUE: float = 0
 
-        if self.params_dict["shoplayout"] == "RJSe":
+        elif self.params_dict["shoplayout"] == "RJSe":
             self.WC_AND_FLOW_CONFIGURATION: str = 'RJS'
             self.WC_AND_FLOW_CONFIGURATION_SORTING: bool = True
             self.WC_AND_FLOW_CONFIGURATION_SORTINGCLASSIC : bool = False
@@ -114,7 +114,7 @@ class ModelPanel(object):
             self.WC_AND_FLOW_CONFIGURATION_FIRSTWORKINGSYSTEM: bool = True
             self.WC_AND_FLOW_CONFIGURATION_SORTINGVALUE: float = 0
 
-        if self.params_dict["shoplayout"] == "RJS75":
+        elif self.params_dict["shoplayout"] == "RJS75":
             self.WC_AND_FLOW_CONFIGURATION: str = 'RJS'
             self.WC_AND_FLOW_CONFIGURATION_SORTING: bool = True
             self.WC_AND_FLOW_CONFIGURATION_SORTINGCLASSIC : bool = True
@@ -122,7 +122,7 @@ class ModelPanel(object):
             self.WC_AND_FLOW_CONFIGURATION_FIRSTWORKINGSYSTEM: bool = False
             self.WC_AND_FLOW_CONFIGURATION_SORTINGVALUE: float = 0.75
 
-        if self.params_dict["shoplayout"] == "RJSe75":
+        elif self.params_dict["shoplayout"] == "RJSe75":
             self.WC_AND_FLOW_CONFIGURATION: str = 'RJS'
             self.WC_AND_FLOW_CONFIGURATION_SORTING: bool = True
             self.WC_AND_FLOW_CONFIGURATION_SORTINGCLASSIC : bool = True
@@ -130,13 +130,21 @@ class ModelPanel(object):
             self.WC_AND_FLOW_CONFIGURATION_FIRSTWORKINGSYSTEM: bool = True
             self.WC_AND_FLOW_CONFIGURATION_SORTINGVALUE: float = 0.75
 
-        if self.params_dict["shoplayout"] == "PFS":
+        elif self.params_dict["shoplayout"] == "PFS":
             self.WC_AND_FLOW_CONFIGURATION: str = 'PFS'
             self.WC_AND_FLOW_CONFIGURATION_SORTING: bool = False
             self.WC_AND_FLOW_CONFIGURATION_SORTINGCLASSIC : bool = False
             self.WC_AND_FLOW_CONFIGURATION_SORTINGFIRST: bool = False
             self.WC_AND_FLOW_CONFIGURATION_FIRSTWORKINGSYSTEM: bool = False
             self.WC_AND_FLOW_CONFIGURATION_SORTINGVALUE: float = 0
+
+        else:
+            self.WC_AND_FLOW_CONFIGURATION: str= self.params_dict["shoplayout"]
+            self.WC_AND_FLOW_CONFIGURATION_SORTING: bool=False
+            self.WC_AND_FLOW_CONFIGURATION_SORTINGCLASSIC: bool=False
+            self.WC_AND_FLOW_CONFIGURATION_SORTINGFIRST: bool=False
+            self.WC_AND_FLOW_CONFIGURATION_FIRSTWORKINGSYSTEM: bool=False
+            self.WC_AND_FLOW_CONFIGURATION_SORTINGVALUE: float=0
 
 
         # process and arrival times-------------------------------------------------------------------------------------
