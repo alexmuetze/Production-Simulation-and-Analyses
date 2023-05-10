@@ -98,7 +98,7 @@ class ModelPanel(object):
         Plus special routing settings enabling the definition of a fixed first work center and routing strengths
         """
 
-               if self.params_dict["shoplayout"] == "RJS":
+        if self.params_dict["shoplayout"] == "RJS":
             self.WC_AND_FLOW_CONFIGURATION: str = 'RJS'
             self.WC_AND_FLOW_CONFIGURATION_SORTING: bool = False
             self.WC_AND_FLOW_CONFIGURATION_SORTINGCLASSIC : bool = False
