@@ -44,6 +44,7 @@ class ReleaseControl(object):
             - SPT_Total
             - SPT
             - PRD
+            - FRO
             - MODCS
             - EDD
             - SLACK
@@ -59,6 +60,8 @@ class ReleaseControl(object):
             seq_priority = order.process_time_cumulative
         elif self.sim.policy_panel.sequencing_rule == "PRD":
             seq_priority = order.planned_release_date
+        elif self.sim.policy_panel.sequencing_rule == "FRO":
+            seq_priority = len(order.routing_sequence)
         elif self.sim.policy_panel.sequencing_rule == "MODCS":
             seq_priority = order.pool_priority
         elif self.sim.policy_panel.sequencing_rule == "EDD":
