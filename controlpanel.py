@@ -260,6 +260,7 @@ class PolicyPanel(object):
             - SPT_Total
             - SPT
             - EDD
+            - FRO
             - MODCS
             - SLACK
             - "Once_Random", "True_Random"
