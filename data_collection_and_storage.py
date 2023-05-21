@@ -421,7 +421,7 @@ class Data_Experiment(object):
             for j in list:
                 df=df.sort_values(by=j)
                 df[f"{j}_Rank"]=df[f"{j}"].rank(method='first')
-                variable=df.iloc[:, [7 + 5 * i]].columns.tolist()
+                variable=df.iloc[:, [8 + 5 * i]].columns.tolist()
                 df[f"{j}_Rank_weighted"]=df[f"{variable[0]}"].cumsum()
 
 
