@@ -1685,8 +1685,8 @@ class Experiment_Manager(object):
                                                                                       f"{work_centre}"].mean() / df.loc[
                                                                                                                                              :,
                                                                                                                                              f"process_time_{work_centre}"].mean()
-            df["TAA_System_rs"]=df[f"TAZ_System"] - df["TAA_System_rf"]
-            df["TAA_System_rs_weighted"]=df[f"TAZ_System"] - df["TAA_System_rf_weighted"]
+            df["TAA_System_rs"]=df[f"TAA_System"] - df["TAA_System_rf"]
+            df["TAA_System_rs_weighted"]=df[f"TAA_System"] - df["TAA_System_rf_weighted"]
 
             mean_taa_system_mg=round(
                 (df["TAA_System"] * df.loc[:, f"process_time_{work_centre}"]).sum() / df.loc[:,
