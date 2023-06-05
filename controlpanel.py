@@ -271,6 +271,7 @@ class PolicyPanel(object):
         """
         Release rules 
         - LUMS_COR
+        - LUMS_COR_Mod
         - WLC_AL
         - WLC_CAL
         - WLC_LD
@@ -285,6 +286,7 @@ class PolicyPanel(object):
             Key for the release control 
                 Workload Control options using corrected aggregate load (Oosterman et al., 2000)
                 -   LUMS_COR: combines both periodic and continuous release (Thürer et al., 2012)
+                -   LUMS_COR_Mod: combination of LUMS_COR idea with modified workload calculation
                 -   pure_periodic: periodic release (Land et al., 2004) [WLC_AL, WLC_CAL]
                 -   pure_continuous:
                     - UBR: upper bound release (Thürer et al., 2014)
