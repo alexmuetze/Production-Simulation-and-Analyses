@@ -97,7 +97,7 @@ class SimulationModel(object):
 
         # activate release control, LOOR and WLC_LD are own processes, triggered if choosen!
         if self.policy_panel.release_control:
-            if self.policy_panel.release_control_method in ["LUMS_COR", "WLC_AL", "WLC_CAL"]:
+            if self.policy_panel.release_control_method in ["LUMS_COR", "WLC_AL", "WLC_CAL", "LUMS_COR_Mod"]:
                 self.release_periodic: Process[Event, None, None] = \
                     self.env.process(self.release_control.periodic_release())
             if self.policy_panel.release_control_method == "LOOR":
