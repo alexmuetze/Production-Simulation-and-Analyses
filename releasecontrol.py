@@ -81,6 +81,7 @@ class ReleaseControl(object):
         """
         Release rules 
             - LUMS_COR
+            - LUMS_COR_Mod
             - WLC_AL
             - WLC_CAL
             - WLC_LD
@@ -92,7 +93,7 @@ class ReleaseControl(object):
             - Immediate
         """
 
-        if self.sim.policy_panel.release_control_method == "LUMS_COR":
+        if self.sim.policy_panel.release_control_method in ["LUMS_COR","LUMS_COR_Mod"]:
             work_center = order.routing_sequence[0]
             self.continuous_trigger_activation(work_center=work_center)
         elif self.sim.policy_panel.release_control_method in ["LOOR", "WLC_LD"]:
@@ -198,33 +199,44 @@ class ReleaseControl(object):
                                                                              self.sim.policy_panel.release_time_limit_value):
                         continue
 
-                # contribute the load from for each workstation
-                for WC in order.routing_sequence:
-                    # Corrected Aggregate Load
-                    if self.sim.policy_panel.release_control_method in ["LUMS_COR", "WLC_CAL"]:
-                        self.sim.model_panel.RELEASED[WC] += order.process_time[WC] / (
-                                    order.routing_sequence.index(WC) + 1)
-                    # Aggregate Load
-                    elif self.sim.policy_panel.release_control_method == "WLC_AL":
-                        self.sim.model_panel.RELEASED[WC] += order.process_time[WC]
-                order.release = True
+                order.release=True
 
-                # the new load is compared to the norm
-                for WC in order.routing_sequence:
-                    if self.sim.model_panel.RELEASED[WC] - self.sim.model_panel.PROCESSED[WC] \
-                            > self.sim.policy_panel.release_norm:
-                        order.release = False
+                if self.sim.policy_panel.release_control_method == "LUMS_COR_Mod":
+                    for WC in order.routing_sequence:
+                        if self.sim.model_panel.RELEASED[WC] - self.sim.model_panel.PROCESSED[WC] > self.sim.policy_panel.release_norm:
+                            order.release=False
+                            break
+                    if order.release == True:
+                        for WC in order.routing_sequence:
+                            self.sim.model_panel.RELEASED[WC] += order.process_time[WC] / (order.routing_sequence.index(WC) + 1)
+
+                if self.sim.policy_panel.release_control_method in ["LUMS_COR", "WLC_CAL", "WLC_AL"]:
+                    # contribute the load from for each workstation
+                    for WC in order.routing_sequence:
+                        # Corrected Aggregate Load
+                        if self.sim.policy_panel.release_control_method in ["LUMS_COR", "WLC_CAL"]:
+                            self.sim.model_panel.RELEASED[WC] += order.process_time[WC] / (
+                                        order.routing_sequence.index(WC) + 1)
+                        # Aggregate Load
+                        elif self.sim.policy_panel.release_control_method == "WLC_AL":
+                            self.sim.model_panel.RELEASED[WC] += order.process_time[WC]
+
+                    # the new load is compared to the norm
+                    for WC in order.routing_sequence:
+                        if self.sim.model_panel.RELEASED[WC] - self.sim.model_panel.PROCESSED[WC] \
+                                > self.sim.policy_panel.release_norm:
+                            order.release = False
 
                 # if a norm has been violated the job is not released and the contributed load set back
-                if not order.release:
-                    for WC in order.routing_sequence:
-                        if self.sim.policy_panel.release_control_method in ["LUMS_COR", "WLC_CAL"]:
-                            self.sim.model_panel.RELEASED[WC] -= order.process_time[WC] / (
-                                        order.routing_sequence.index(WC) + 1)
-                        elif self.sim.policy_panel.release_control_method == "WLC_AL":
-                            self.sim.model_panel.RELEASED[WC] -= order.process_time[WC]
-                        else:
-                            raise Exception("No valid configuration for periodic release!")
+                    if not order.release:
+                        for WC in order.routing_sequence:
+                            if self.sim.policy_panel.release_control_method in ["LUMS_COR", "WLC_CAL"]:
+                                self.sim.model_panel.RELEASED[WC] -= order.process_time[WC] / (
+                                            order.routing_sequence.index(WC) + 1)
+                            elif self.sim.policy_panel.release_control_method == "WLC_AL":
+                                self.sim.model_panel.RELEASED[WC] -= order.process_time[WC]
+                            else:
+                                raise Exception("No valid configuration for periodic release!")
 
                 # the released orders are collected into a list for release
                 if order.release:
@@ -344,28 +356,11 @@ class ReleaseControl(object):
 
                 # contribute the load to the workload measures
                 for WC in order.routing_sequence:
-                    if self.sim.policy_panel.release_control_method in ["LUMS_COR", "WLC_CAL"]:
+                    if self.sim.policy_panel.release_control_method in ["LUMS_COR", "LUMS_COR_Mod"]:
                         self.sim.model_panel.RELEASED[WC] += order.process_time[WC] / (
                                 order.routing_sequence.index(WC) + 1)
-                    elif self.sim.policy_panel.release_control_method == "WLC_AL":
-                        self.sim.model_panel.RELEASED[WC] += order.process_time[WC]
+                        
                 order.release = True
-
-                for WC in order.routing_sequence:
-                    if self.sim.model_panel.RELEASED[WC] - self.sim.model_panel.PROCESSED[WC] \
-                            > self.sim.policy_panel.release_norm:
-                        order.release = False
-
-                # if a norm has been violated the job is not released and the contributed load set back
-                if not order.release:
-                    for WC in order.routing_sequence:
-                        if self.sim.policy_panel.release_control_method in ["LUMS_COR", "WLC_CAL"]:
-                            self.sim.model_panel.RELEASED[WC] -= order.process_time[WC] / (
-                                        order.routing_sequence.index(WC) + 1)
-                        elif self.sim.policy_panel.release_control_method == "WLC_AL":
-                            self.sim.model_panel.RELEASED[WC] -= order.process_time[WC]
-                        else:
-                            raise Exception("No valid configuration for periodic release!")
 
                 # if an order turned out to be released, it is send to be removed from the pool
                 if order.release:
