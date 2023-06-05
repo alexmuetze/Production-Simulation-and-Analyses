@@ -406,9 +406,11 @@ class Data_Experiment(object):
 
         for i in list:
             if i == 'actual_release':
-                df=df.sort_values(by='planned_release')
+                df=df.sort_values(['actual_release', 'planned_release'])
 
-            df=df.sort_values(by=i)
+            else:
+                df=df.sort_values(by=i)
+                
             df[f"{i}_Rank"]=df[f"{i}"].rank(method='first')
             df[f"{i}_Rank_weighted"]=df["total_process_time"].cumsum()
 
