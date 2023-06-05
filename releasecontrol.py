@@ -617,7 +617,7 @@ class ReleaseControl(object):
                             order.routing_sequence_data.index(work_center) + 1)
 
         # continuous trigger LUMS COR
-        if self.sim.policy_panel.release_control_method == "LUMS_COR":
+        if self.sim.policy_panel.release_control_method in ["LUMS_COR", "LUMS_COR_Mod"]:
             self.sim.release_control.continuous_trigger_activation(work_center=work_center)
 
         # continuous release methods
