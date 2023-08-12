@@ -1709,7 +1709,7 @@ class Experiment_Manager(object):
             y3=df[f"TAR_System"]
             df["TAR_System_rf"]=df["TAA_System_rf"] - df["TAZ_System_rf"]
             df["TAR_System_rf_weighted"]=df["TAA_System_rf_weighted"] - df["TAZ_System_rf_weighted"]
-            df["TAR_System_rs"]=df["TAA_System_rs"] - df["TAZ_System_rf"]
+            df["TAR_System_rs"]=df["TAA_System_rs"] - df["TAZ_System_rs"]
             df["TAR_System_rs_weighted"]=df["TAA_System_rs_weighted"] - df["TAZ_System_rs_weighted"]
 
             mean_tar_system_mg=round((df["TAR_System"] * df.loc[:, f"process_time_{work_centre}"]).sum() / df.loc[:,
